@@ -1,0 +1,22 @@
+{
+  "name": "yjs-quill",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/quill": "*",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
+  },
+  "dependencies": {
+    "quill": "^1.3.7",
+    "quill-cursors": "^4.0.2",
+    "y-quill": "^0.1.5",
+    "yjs": "^13.6.0"
+  }
+}
