@@ -33,5 +33,18 @@ const provider = new WebsocketProvider(
   ydoc
 );
 
+const awareness = provider.awareness;
 // 绑定
-const binding = new QuillBinding(ytext, quill, provider.awareness);
+const binding = new QuillBinding(ytext, quill, awareness);
+
+// 感知对象的变化（这里指的是光标）
+awareness.on('change', () => {
+  console.log(Array.from(awareness.getStates().values()));
+});
+
+// 给要进行传播的 awareness 对象加上一个 user 字段
+// 这个字段会通过 QuillBinding 加到虚拟光标的末尾。
+awareness.setLocalStateField('user', {
+  name: '西瓜',
+  color: '#f04',
+});
