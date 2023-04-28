@@ -2,7 +2,7 @@ import Quill from 'quill';
 import QuillCursors from 'quill-cursors';
 import 'quill/dist/quill.snow.css';
 import { QuillBinding } from 'y-quill';
-import { WebrtcProvider } from 'y-webrtc';
+import { WebsocketProvider } from 'y-websocket';
 
 import * as Y from 'yjs';
 
@@ -27,7 +27,11 @@ const quill = new Quill(document.querySelector('#editor')!, {
 const ydoc = new Y.Doc(); // yjs 文档，保存共享数据
 const ytext = ydoc.getText('quill');
 
-const provider = new WebrtcProvider('quill-demo-room', ydoc);
+const provider = new WebsocketProvider(
+  'wss://demos.yjs.dev',
+  'quill-demo-room',
+  ydoc
+);
 
 // 绑定
 const binding = new QuillBinding(ytext, quill, provider.awareness);
