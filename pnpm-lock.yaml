@@ -7,6 +7,9 @@ dependencies:
   quill-cursors:
     specifier: ^4.0.2
     version: 4.0.2
+  y-indexeddb:
+    specifier: ^9.0.10
+    version: 9.0.10(yjs@13.6.0)
   y-quill:
     specifier: ^0.1.5
     version: 0.1.5(quill@1.3.7)(yjs@13.6.0)
@@ -847,6 +850,15 @@ packages:
     engines: {node: '>=0.4'}
     dev: false
     optional: true
+
+  /y-indexeddb@9.0.10(yjs@13.6.0):
+    resolution: {integrity: sha512-Tz4IzLZ20Pe8LTjXU125k2+7caERsX4ANsrjskHMm3yXUX4v9kBga/kK7ctT05P0uAj+glQComkAglY1qey7zg==}
+    peerDependencies:
+      yjs: ^13.0.0
+    dependencies:
+      lib0: 0.2.74
+      yjs: 13.6.0
+    dev: false
 
   /y-leveldb@0.1.2(yjs@13.6.0):
     resolution: {integrity: sha512-6ulEn5AXfXJYi89rXPEg2mMHAyyw8+ZfeMMdOtBbV8FJpQ1NOrcgi6DTAcXof0dap84NjHPT2+9d0rb6cFsjEg==}

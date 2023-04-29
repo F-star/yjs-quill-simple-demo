@@ -3,6 +3,7 @@ import QuillCursors from 'quill-cursors';
 import 'quill/dist/quill.snow.css';
 import { QuillBinding } from 'y-quill';
 import { WebsocketProvider } from 'y-websocket';
+import { IndexeddbPersistence } from 'y-indexeddb';
 
 import * as Y from 'yjs';
 
@@ -27,11 +28,15 @@ const quill = new Quill(document.querySelector('#editor')!, {
 const ydoc = new Y.Doc(); // yjs 文档，保存共享数据
 const ytext = ydoc.getText('quill');
 
-const provider = new WebsocketProvider(
-  'wss://demos.yjs.dev',
-  'quill-demo-room',
-  ydoc
-);
+const roomName = 'quill-demo-room';
+
+const persistence = new IndexeddbPersistence(roomName, ydoc);
+
+persistence.on('synced', () => {
+  console.log('同步内容到本地');
+});
+
+const provider = new WebsocketProvider('wss://demos.yjs.dev', roomName, ydoc);
 
 const awareness = provider.awareness;
 // 绑定
